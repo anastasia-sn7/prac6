@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="assets/js/script.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Slider</title>
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        window.onload = function() {
+            let slides = [
+                {
+                    title: "Armin",
+                    background: "assets/img/1.jpg",
+                    link: "https://attackontitan.fandom.com/wiki/Armin_Arlert"
+                }, {
+                    title: "Venti",
+                    background: "assets/img/2.jpg",
+                    link: "https://genshin-impact.fandom.com/wiki/Venti"
+                }, {
+                    title: "Tartaglia",
+                    background: "assets/img/3.jpeg",
+                    link: "https://genshin-impact.fandom.com/wiki/Tartaglia"
+                }
+            ]
+            Slider.initSlider(slides);
+        };
+    </script>
+</head>
+<body>
+<header class="header"><p>Header...
+    <img src="assets/img/image1.jpg" width="50" height="30" alt="картинка не загрузилась"> </p> </header>
+<div class="container">
+    <main class="center column">
+        <article>
+            <h1>Slider</h1>
+            <p>
+            <div id="slider"></div>
+            <input id="butt1" class="buttons" type="button" value="Prev"/>
+            <input id="butt2" class="buttons" type="button" value="Next"/>
+            <input id="butt3" class="buttons" type="button" value="Hide"/>
+            <input id="butt4" class="buttons" type="button" value="Start"/>
+
+            <script>
+                index = 0;
+
+                function handler1() {
+                    Slider.prevSlide();
+                }
+                function handler2() {
+                    Slider.nextSlide();
+                }
+                function handler3(){
+                    if (index % 2 == 0) {
+                        document.getElementById("slider").style.display = "none";
+                        butt3.value = "Sh ow";
+                    }
+                    else {
+                        document.getElementById("slider").style.display = 'block';
+                        butt3.value = "Hide";
+                    }
+                    index++;
+                }
+
+                butt1.addEventListener("click", handler1);
+                butt2.addEventListener("click", handler2);
+                butt3.addEventListener("click", handler3);
+                butt4.addEventListener('click', (event)=>{
+                    if (event.target.classList.contains('start')){
+                        event.target.innerHTML = 'Stop';
+                        butt4.value = 'Start';
+                        clearInterval(interval)
+                    } else {
+                        event.target.innerHTML = 'Start';
+                        butt4.value = 'Stop';
+                        interval = setInterval(()=>{
+                            Slider.nextSlide();
+                        },1000)
+                    }
+                    event.target.classList.toggle('start')
+                })
+
+            </script>
+            </p>
+
+            <p id = "rrr">
+
+            </p>
+        </article>
+    </main>
+    <nav class="left column">
+        <h3>Left heading</h3>
+        <ul>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <h3>Left heading</h3>
+        <ul>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <h3>Left heading</h3>
+        <ul>
+            <li><a href="slider.html">Slider</a></li>
+        </ul>
+        <h3>Left heading</h3>
+        <ul>
+            <li><a href="media.html">Media</a></li>
+        </ul>
+        <h3>Left heading</h3>
+        <ul>
+            <li><a href="table.html">Table</a></li>
+        </ul>
+
+    </nav>
+    <div class="right column">
+        <h3>Right heading</h3>
+        <p></p>
+    </div>
+    <div class="push"></div>
+
+</div>
+<div class="footer-wrapper">
+    <footer class="footer"><p>Footer... <img src="assets/img/image1.jpg" width="50" height="30" alt="картинка не загрузилась">  </p></footer>
+</div>
+</body>
+</html>
